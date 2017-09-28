@@ -1,6 +1,6 @@
-Erevna Dictionary Location Data Loader
+Erevna Elasticsearch Interface
 
-Nodejs application for loading data from gdoc to json file
+Nodejs application as an inteterface to elasticsearch
 
 ####Install
 
