@@ -1,0 +1,39 @@
+{
+  "name": "erevna-es-interface-js",
+  "version": "1.0.0",
+  "description": "erevna es inteterface with javascript",
+  "author": "opetstudio@gmail.com",
+  "main": "server.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node server.js",
+    "start-docker": "cross-env NODE_ENV=production-docker node server.js",
+    "start-dev": "cross-env NODE_ENV=development node server.js",
+    "start-dev-docker": "cross-env NODE_ENV=development-docker node server.js",
+    "start-staging": "cross-env NODE_ENV=staging node server.js",
+    "start-staging-docker": "cross-env NODE_ENV=staging-docker node server.js"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "cross-env": "^5.0.5",
+    "crypto": "^1.0.1",
+    "erevna-services": "^1.3.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.11.12",
+    "tracer": "^0.8.11"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opetstudio/erevna-es-interface-js.git"
+  },
+  "keywords": [
+    "erevna",
+    "services",
+    "elasticsearch"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opetstudio/erevna-es-interface-js/issues"
+  },
+  "homepage": "https://github.com/opetstudio/erevna-es-interface-js#readme"
+}
