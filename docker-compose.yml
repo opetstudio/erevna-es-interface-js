@@ -1,8 +1,6 @@
-version: "1"
+version: "3"
 services:
   web:
-    image: opetstudio/erevna-es-interface-js:1.0.0
+    image: opetstudio/erevna-es-interface-js:201709
     ports:
       - "4001:8081"
-    links:
-      - mongo

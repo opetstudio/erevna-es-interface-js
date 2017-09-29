@@ -10,10 +10,14 @@ Nodejs application as an inteterface to elasticsearch
 
   rename config-example.js to config.js
 
+###start
+
+  npm start
+
 
 ####Docker run
 
-  docker build -t  opetstudio/erevna-es-interface-js:1.0.0 .
+  docker build -t  opetstudio/erevna-es-interface-js:201709 .
 
 ####Docker pull command
 
