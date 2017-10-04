@@ -1,11 +1,50 @@
 const _logger    = require('tracer').console();
 const model_clicks = require('../models/es-clicks');
 
+module.exports['fetchAllByPartner'] = function(req, res, next) {
+  var opt = {
+    country: req.query.country || 'id',
+    partner: req.query.partner,
+  }
+  var out = function(status, e, result){
+    res.json({
+      status: status,
+      error: e,
+      result: result
+    });
+  }
+  if(!opt.partner) return out(false, 'partner is null', null);
+
+  model_clicks.fetchAllByPartner(opt, function(e,resultSearch){
+      out(false,e,resultSearch);
+  });
+}
+module.exports['sumTotalClicksByPartner'] = function(req, res, next) {
+  var opt = {
+    country: req.query.country || 'id',
+    partner: req.query.partner,
+    interval: req.query.interval || 'week',
+  }
+  var out = function(status, e, result){
+    res.json({
+      status: status,
+      error: e,
+      result: result
+    });
+  }
+  if(!opt.partner) return out(false, 'partner is null', null);
+
+  model_clicks.sumTotalClicksByPartner(opt, function(e,resultSearch){
+      out(false,e,resultSearch);
+  });
+}
 module.exports['sumClicksByPartner'] = function(req, res, next) {
   var opt = {
     country: req.query.country || 'id',
     partner: req.query.partner,
     interval: req.query.interval || 'week',
+    starttime: req.query.starttime || 0,
+    endtime: req.query.endtime || 0,
   }
   var out = function(status, e, result){
     res.json({

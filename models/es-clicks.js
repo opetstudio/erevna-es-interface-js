@@ -67,27 +67,27 @@ module.exports.indexing = function(data, country, callback){
   });
 }
 
-// function getAggs(){
-//   return {
-//     "group_by_partner": {
-//       "terms": {
-//         "field": "partner"
-//       },
-//       "aggs": {
-//         "total_clicks": {
-//           "sum": {
-//             "field": "jumlah_click"
-//           }
-//         },
-//         // "total_cost": {
-//         //   "sum": {
-//         //     "field": "StandardCost"
-//         //   }
-//         // }
-//       }
-//     }
-//   }
-// }
+function getAggsTotalClickByPartner(){
+  return {
+    "group_by_partner": {
+      "terms": {
+        "field": "partner"
+      },
+      "aggs": {
+        "total_clicks": {
+          "sum": {
+            "field": "jumlah_click"
+          }
+        },
+        // "total_cost": {
+        //   "sum": {
+        //     "field": "StandardCost"
+        //   }
+        // }
+      }
+    }
+  }
+}
 function getAggs(interval){
   return {
     "clicks_per_interval" : {
@@ -107,6 +107,58 @@ function getAggs(interval){
 }
 
 module.exports.sumClicksByPartner = function(opt, callback){
+    logger.info('sumClicksByPartner invoked opt=', opt);
+    var country = opt.country;
+    var partner = opt.partner;
+    var interval = opt.interval;
+    var starttime = opt.starttime;
+    var endtime = opt.endtime;
+
+    // var now = new Date();
+    // var start_date = new Date().getTime();
+    //
+    // start_date.setDate(now.getDate() - 7);
+    //
+    // var end_date = new Date().getTime();
+    // var oneWeekAgo = new Date();
+
+
+    var par = {
+        index: indexName+'_'+country,
+        type: indexType,
+        body: {
+          // "query": { "match_all": {} },
+          "query": {
+            "bool": {
+              "filter":[
+                   {"term":{"partner":partner}},
+                   {"range":{"unixtime":{"gte":starttime,"lte":endtime}}},
+               ]
+            }
+          },
+          // "query": {
+          //   "filtered": {
+          //     "filter": {
+          //       "bool": {
+          //         "must": [{
+          //           "term": {
+          //             "partner": partner
+          //           }
+          //         }]
+          //       }
+          //     }
+          //   }
+          // },
+          "aggs": getAggs(interval) //interval= week, month, year
+        }
+        // from:0,
+        // size:100
+    }
+    es.search(par, function(e,o){
+      callback(e,o);
+    });
+}
+module.exports.sumTotalClicksByPartner = function(opt, callback){
     logger.info('sumClicksByPartner invoked opt=', opt);
     var country = opt.country;
     var partner = opt.partner;
@@ -136,7 +188,32 @@ module.exports.sumClicksByPartner = function(opt, callback){
           //     }
           //   }
           // },
-          "aggs": getAggs(interval) //interval= week, month, year
+          "aggs": getAggsTotalClickByPartner()
+        }
+        // from:0,
+        // size:100
+    }
+    es.search(par, function(e,o){
+      callback(e,o);
+    });
+}
+module.exports.fetchAllByPartner = function(opt, callback){
+    logger.info('fetchAllByPartner invoked opt='+opt);
+    var country = opt.country;
+    var partner = opt.partner;
+    var par = {
+        index: indexName+'_'+country,
+        // index: 'clicks_id',
+        type: indexType,
+        // type: ' homes',
+        body: {
+          "query": {
+            "bool": {
+              "filter":{
+                 "term":{"partner":partner}
+               }
+            }
+          }
         }
         // from:0,
         // size:100
