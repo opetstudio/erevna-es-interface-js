@@ -44,7 +44,6 @@ Nodejs application as an inteterface to elasticsearch
 
   docker container kill <hash>         # Force shutdown of the specified container
 
-
 ###deploy
 
   deploy di mesin elasticsearch
