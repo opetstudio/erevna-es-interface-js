@@ -43,3 +43,17 @@ Nodejs application as an inteterface to elasticsearch
   docker container stop <hash>           # Gracefully stop the specified container
 
   docker container kill <hash>         # Force shutdown of the specified container
+
+
+###deploy
+
+  deploy di mesin elasticsearch
+
+###Endpoint
+
+  - /clicks/sumClicksByPartner?partner=olx&country=id
+  - /clicks/sumTotalClicksByPartner?partner=olx&country=id
+  - /dictionaryPropertycategory/initMapping?country=id
+  - /clicks/fetchAllByPartner?partner=olx&country=id
+  - /dictionaryPropertycategory/indexing?text=aparte%20men&meaning=apartment
+  - /dictionaryPropertycategory/fetchOneById/id/apartemen

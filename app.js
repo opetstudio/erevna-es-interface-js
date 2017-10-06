@@ -12,6 +12,7 @@ const app = express();
 
 const model_clicks = require('./models/es-clicks');
 app.use(['/clicks'], require('./routes/clicksRoute'));
+app.use(['/dictionaryPropertycategory'], require('./routes/dictionaryPropertycategoryRoute'));
 
 module.exports = app;
 
