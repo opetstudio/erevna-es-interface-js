@@ -49,7 +49,6 @@ Nodejs application as an inteterface to elasticsearch
   deploy di mesin elasticsearch
 
 ###Endpoint
-
   - /clicks/sumClicksByPartner?partner=olx&country=id
   - /clicks/sumTotalClicksByPartner?partner=olx&country=id
   - /dictionaryPropertycategory/initMapping?country=id
