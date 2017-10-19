@@ -51,7 +51,28 @@ Nodejs application as an inteterface to elasticsearch
 ###Endpoint
   - /clicks/sumClicksByPartner?partner=olx&country=id
   - /clicks/sumTotalClicksByPartner?partner=olx&country=id
-  - /dictionaryPropertycategory/initMapping?country=id
   - /clicks/fetchAllByPartner?partner=olx&country=id
+
+###Endpoint entity
+  - /locations/initMapping?country=id
+  - POST /locations/indexing
+    {
+      name: String
+      keyrow: String
+      level: Integer
+      level1: String,
+      level2: String,
+      level3: String,
+      level4: String,
+      latlon: {lat:Float,lon:Float}
+    }
+  - /locations/fetchOneById/<country>/<id>
+
+###Endpoint dictionary api
+  - /dictionaryPropertycategory/initMapping?country=id
   - /dictionaryPropertycategory/indexing?text=aparte%20men&meaning=apartment
   - /dictionaryPropertycategory/fetchOneById/id/apartemen
+
+  e.g:
+
+  http://45.77.34.141:4001/dictionaryLocation/indexing?text=jakarta&meaning=dki jakarta&foreignkey=dki jakarta

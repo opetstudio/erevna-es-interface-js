@@ -1,7 +1,7 @@
 const logger    = require('tracer').console();
 const es = require('../es-connection');
 const util = require('../utils/util');
-const indexName = "dictionary_propertycategory";
+const indexName = "dictionary_location";
 module.exports.indexName = indexName;
 const indexType = "homes";
 const schema = {
@@ -12,7 +12,8 @@ const schema = {
             createdon:{type: "long","index" : "not_analyzed"},
             modifiedon:{type: "long","index" : "not_analyzed"},
             text:{type: "string","index" : "not_analyzed"},
-            meaning:{type: "string","index" : "not_analyzed"}
+            meaning:{type: "string","index" : "not_analyzed"},
+            foreignkey:{type: "string","index" : "not_analyzed"}
         }
     }
 }

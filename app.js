@@ -1,6 +1,7 @@
 'use strict';
 require('./bootstrap');
 const express = require('express');
+const bodyParser = require('body-parser');
 const erevna = require('erevna-services');
 
 // Constants
@@ -9,10 +10,15 @@ const erevna = require('erevna-services');
 
 // App
 const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const model_clicks = require('./models/es-clicks');
+app.use(['/'], require('./routes/indexRoute'));
 app.use(['/clicks'], require('./routes/clicksRoute'));
 app.use(['/dictionaryPropertycategory'], require('./routes/dictionaryPropertycategoryRoute'));
+app.use(['/dictionaryLocation'], require('./routes/dictionaryLocationRoute'));
+app.use(['/locations'], require('./routes/locationsRoute'));
 
 module.exports = app;
 
