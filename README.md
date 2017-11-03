@@ -75,4 +75,4 @@ Nodejs application as an inteterface to elasticsearch
 
   e.g:
 
-  http://45.77.34.141:4001/dictionaryLocation/indexing?text=jakarta&meaning=dki jakarta&foreignkey=dki jakarta
+  http://xxx.141:4001/dictionaryLocation/indexing?text=jakarta&meaning=dki jakarta&foreignkey=dki jakarta
