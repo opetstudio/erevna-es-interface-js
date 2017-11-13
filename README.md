@@ -76,3 +76,11 @@ Nodejs application as an inteterface to elasticsearch
   e.g:
 
   http://xxx.141:4001/dictionaryLocation/indexing?text=jakarta&meaning=dki jakarta&foreignkey=dki jakarta
+
+
+######script untuk initial elasticsearch schema
+
+      - format:
+      npm run init-mapping <model name> <country>
+      - contoh:
+      npm run init-mapping es-frase id

@@ -10,7 +10,8 @@
     "start-dev": "cross-env NODE_ENV=development node ./bin/www",
     "start-dev-docker": "cross-env NODE_ENV=development-docker node ./bin/www",
     "start-staging": "cross-env NODE_ENV=staging node ./bin/www",
-    "start-staging-docker": "cross-env NODE_ENV=staging-docker node ./bin/www"
+    "start-staging-docker": "cross-env NODE_ENV=staging-docker node ./bin/www",
+    "init-mapping": "cross-env NODE_ENV=staging node ./bin/initMapping"
   },
   "dependencies": {
     "async": "^2.5.0",
